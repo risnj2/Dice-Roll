@@ -1,0 +1,15 @@
+
+
+---- Began New Recording On {2018:02:03} at {20:05:18} ----
+This D20 roll is: 17 ----- TimeStamp{20:05:18}
+This D20 roll is: 15 ----- TimeStamp{20:05:18}
+This D20 roll is: 13 ----- TimeStamp{20:05:18}
+This D20 roll is: 19 ----- TimeStamp{20:05:19}
+This D20 roll is: 14 ----- TimeStamp{20:05:19}
+
+
+---- Began New Recording On {03:02:2018} at {20:05:57} ----
+This D20 roll is: 20 ----- TimeStamp{20:05:57}
+This D20 roll is: 18 ----- TimeStamp{20:05:58}
+This D20 roll is: 9 ----- TimeStamp{20:05:58}
+This D20 roll is: 17 ----- TimeStamp{20:05:59}

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DiceRoll:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DiceRoll_jar</output-path>
+    <root id="archive" name="DiceRoll.jar">
+      <element id="module-output" name="DiceRoll" />
+    </root>
+  </artifact>
+</component>
