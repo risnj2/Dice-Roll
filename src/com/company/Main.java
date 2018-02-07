@@ -11,21 +11,33 @@ public class Main {
     public static int beginFile = 0;
 
     public static void main(String[] args) {
-        System.out.println("Enter in the Die Type you want");
-        System.out.println("Type in 'q' to exit");
+        System.out.println("Type in 'q' to exit the program");
         beginFile = 1;
         while(true){
             try{
-                String input = read.next();
+                String input;
+                System.out.println("Enter in the name of the roller if you wish to by pressing 1,\nOtherwise just press any other letter or number");
+                String charName = "No Name";
+                input = read.next();
+                if(input.equals("1")){
+                    System.out.println("Enter in the name");
+                    charName = read.next();
+                }
                 if(input.equals("q") || input.equals("Q")){
                     System.exit(0);
                 }
                 else{
+                    System.out.println("Enter in the Die Type you want");
+                    input = read.next();
                     int DieType = Math.round(Math.abs(Integer.parseInt(input)));
                     if(DieType == 4 || DieType == 6 || DieType == 8 || DieType == 12 || DieType == 20 || DieType == 100){
-                        String rollResult = "This D" + DieType + " roll is: " + Math.round(rand.nextInt(DieType) + 1);
-                        System.out.println(rollResult);
-                        WritingToFile(rollResult,beginFile);
+                        int numRolled = Math.round(rand.nextInt(DieType) + 1);
+                        if(!charName.equals("No Name")){
+                            WritingResult(Integer.toString(numRolled),charName,beginFile,DieType);
+                        }
+                        else{
+                            WritingResult(Integer.toString(numRolled),beginFile,DieType);
+                        }
                     }
                     else{
                         System.out.println("Number input was not a valid dice, please enter again");
@@ -40,18 +52,33 @@ public class Main {
     public static void ChanceRoller(int MaxNum){
         System.out.print(Math.round(rand.nextInt(MaxNum) + 1));
     }
-    public static void WritingToFile(String text, int begin) throws IOException{
-        String timeStampDate = new SimpleDateFormat("dd:MM:yyyy").format(new java.util.Date());
+    public static void WritingResult(String diceOutcome,String charName, int begin, int diceType) throws IOException{
+        String printedResult = "Player " + charName + " has rolled a D" + diceType + " for a result of: " + diceOutcome;
+        System.out.println(printedResult);
+        String timeStampDate = new SimpleDateFormat("MM:dd:yyyy").format(new java.util.Date());
         String timeStampHour = new SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
-        PrintWriter output2 = new PrintWriter(new FileWriter("DiceRollOutput.txt",true));
+        PrintWriter output = new PrintWriter(new FileWriter("DiceRollOutput.txt",true));
         if (begin == 1){
-            output2.println("\n");
-            output2.println("---- Began New Recording On {" + timeStampDate + "} at {" + timeStampHour + "} ----");
+            output.println("\n");
+            output.println("---- Began New Recording On {" + timeStampDate + "} at {" + timeStampHour + "} ----");
             beginFile = 0;
         }
-        output2.println(text + " ----- TimeStamp{" + timeStampHour + "}");
-        output2.close();
-
+        output.println("TimeStamp{" + timeStampHour + "} ----- " + printedResult);
+        output.close();
+    }
+    public static void WritingResult(String diceOutcome, int begin, int diceType) throws IOException{
+        String printedResult = "This D" + diceType + " roll is a: " + diceOutcome;
+        System.out.println(printedResult);
+        String timeStampDate = new SimpleDateFormat("MM:dd:yyyy").format(new java.util.Date());
+        String timeStampHour = new SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
+        PrintWriter output = new PrintWriter(new FileWriter("DiceRollOutput.txt",true));
+        if (begin == 1){
+            output.println("\n");
+            output.println("---- Began New Recording On {" + timeStampDate + "} at {" + timeStampHour + "} ----");
+            beginFile = 0;
+        }
+        output.println("TimeStamp{" + timeStampHour + "} ----- " + printedResult);
+        output.close();
 
         /*
         Other ways
